@@ -23,8 +23,11 @@
 .radio-labels label {
   margin-bottom: 0;
 }
-.tiles-radio input {
-  margin-left: 10px;
+.ember-radio-button input {
+  margin-right: 10px;
+}
+.ember-radio-button span {
+  margin-right: 10px;
 }
 
 /* Global CSS, you probably don't need that */

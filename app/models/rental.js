@@ -17,6 +17,7 @@ export default DS.Model.extend({
   noWindows: attr('number'),
   noSockets: attr('number'),
   condition: attr('string'),
+  contactPersonPosition: attr('string'),
   location: belongsTo(),
   landlord: belongsTo(),
   review: hasMany()

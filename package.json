@@ -35,6 +35,8 @@
     "ember-export-application-global": "^2.0.0",
     "ember-load-initializers": "^1.0.0",
     "ember-maybe-import-regenerator": "^0.1.6",
+    "ember-power-select": "^2.0.4",
+    "ember-radio-button": "^1.2.4",
     "ember-rapid-forms": "^1.2.5",
     "ember-resolver": "^4.0.0",
     "ember-source": "~3.1.0",

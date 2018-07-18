@@ -15,7 +15,16 @@
             {{form.input property="buildingName" label="Building Name" placeholder="Building name ..."}}
             {{form.input property="monthlyRent" label="Monthly rent" placeholder="Monthly rent per month ..."}}
             {{form.input property="deposit" label="Deposit" placeholder="Entry deposit ..."}}
-            {{form.select property="type" label="Rental Type" prompt="--select type of house--" content=rentalTypes optionValuePath="id" optionLabelPath="name"}}
+            <label for="">Select type of house</label>
+            {{#power-select
+              class="form-control"
+              selected=model.type
+              options=rentalTypes
+              onchange=(action "setRentalType")
+            as |type|
+            }}
+              {{type}}
+            {{/power-select}}
             <div class="form-group text-right">
               <button class="btn btn-success" {{ action "validateBasic"}}>Add more details <span class="oi oi-arrow-thick-right"></span></button>
               or
@@ -50,37 +59,127 @@
               <div class="col-6">
                 <div class="form-group">
                   <div class="form-inline">
-                    {{form.input type='radio' class="tiles-radio" property='hasTiles' name='tiles' label='YES'}}
-                    {{form.input type='radio' class="tiles-radio" property='hasTiles' name='tiles' label='NO'}}
-                    {{form.input type='radio' class="tiles-radio" property='hasTiles' name='tiles' label='N/A'}}
+                    {{#radio-button
+                      value="yes"
+                      class="tiles-radio"
+                      groupValue=model.hasTiles
+                    }}
+                      <span>YES</span>
+                    {{/radio-button}}
+                    {{#radio-button
+                      value="no"
+                      class="tiles-radio"
+                      groupValue=model.hasTiles
+                    }}
+                      <span>NO</span>
+                    {{/radio-button}}
+                    {{#radio-button
+                      value="NA"
+                      class="tiles-radio"
+                      groupValue=model.hasTiles
+                    }}
+                      <span>N/A</span>
+                    {{/radio-button}}
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="form-inline">
-                    {{form.input type='radio' class="tiles-radio" property='hasSink' name='sink' label='YES'}}
-                    {{form.input type='radio' class="tiles-radio" property='hasSink' name='sink' label='NO'}}
-                    {{form.input type='radio' class="tiles-radio" property='hasSink' name='sink' label='N/A'}}
+                    {{#radio-button
+                      value="yes"
+                      class="tiles-radio"
+                      groupValue=model.hasSink
+                    }}
+                      <span>YES</span>
+                    {{/radio-button}}
+                    {{#radio-button
+                      value="no"
+                      class="tiles-radio"
+                      groupValue=model.hasSink
+                    }}
+                      <span>NO</span>
+                    {{/radio-button}}
+                    {{#radio-button
+                      value="NA"
+                      class="tiles-radio"
+                      groupValue=model.hasSink
+                    }}
+                      <span>N/A</span>
+                    {{/radio-button}}
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="form-inline">
-                    {{form.input type='radio' class="tiles-radio" property='hasElectricity' name='electricity' label='YES'}}
-                    {{form.input type='radio' class="tiles-radio" property='hasElectricity' name='electricity' label='NO'}}
-                    {{form.input type='radio' class="tiles-radio" property='hasElectricity' name='electricity' label='N/A'}}
+                    {{#radio-button
+                      value="yes"
+                      class="tiles-radio"
+                      groupValue=model.hasElectricity
+                    }}
+                      <span>YES</span>
+                    {{/radio-button}}
+                    {{#radio-button
+                      value="no"
+                      class="tiles-radio"
+                      groupValue=model.hasElectricity
+                    }}
+                      <span>NO</span>
+                    {{/radio-button}}
+                    {{#radio-button
+                      value="NA"
+                      class="tiles-radio"
+                      groupValue=model.hasElectricity
+                    }}
+                      <span>N/A</span>
+                    {{/radio-button}}
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="form-inline">
-                    {{form.input type='radio' class="tiles-radio" property='hasBalcony' name='balcony' label='YES'}}
-                    {{form.input type='radio' class="tiles-radio" property='hasBalcony' name='balcony' label='NO'}}
-                    {{form.input type='radio' class="tiles-radio" property='hasBalcony' name='balcony' label='N/A'}}
+                    {{#radio-button
+                      value="yes"
+                      class="tiles-radio"
+                      groupValue=model.hasBalcony
+                    }}
+                      <span>YES</span>
+                    {{/radio-button}}
+                    {{#radio-button
+                      value="no"
+                      class="tiles-radio"
+                      groupValue=model.hasBalcony
+                    }}
+                      <span>NO</span>
+                    {{/radio-button}}
+                    {{#radio-button
+                      value="NA"
+                      class="tiles-radio"
+                      groupValue=model.hasBalcony
+                    }}
+                      <span>N/A</span>
+                    {{/radio-button}}
                   </div>
                 </div>
                 <div class="form-group">
                   <div class="form-inline">
-                    {{form.input type='radio' class="tiles-radio" property='condition' name='condition' label='NEW'}}
-                    {{form.input type='radio' class="tiles-radio" property='condition' name='condition' label='GOOD'}}
-                    {{form.input type='radio' class="tiles-radio" property='condition' name='condition' label='OLD'}}
+                    {{#radio-button
+                      value="new"
+                      class="tiles-radio"
+                      groupValue=model.condition
+                    }}
+                      <span>NEW</span>
+                    {{/radio-button}}
+                    {{#radio-button
+                      value="GOOD"
+                      class="tiles-radio"
+                      groupValue=model.condition
+                    }}
+                      <span>GOOD</span>
+                    {{/radio-button}}
+                    {{#radio-button
+                      value="OLD"
+                      class="tiles-radio"
+                      groupValue=model.condition
+                    }}
+                      <span>OLD</span>
+                    {{/radio-button}}
                   </div>
                 </div>
               </div>
@@ -132,9 +231,27 @@
             {{form.input property="phoneNumber" label="Phone number" placeholder="Phone No ..."}}
             <p>Select your position</p>
             <div style="padding-left: 20px;">
-              {{form.checkbox property="owner"  label="Owner" canShowErrors=model.visibleErrors.active}}
-              {{form.checkbox property="careTacker" label="Care-tacker" canShowErrors=model.visibleErrors.active}}
-              {{form.checkbox property="agent" label="Agent" canShowErrors=model.visibleErrors.active}}
+              {{#radio-button
+                value="landlord"
+                class="tiles-radio"
+                groupValue=model.contactPersonPosition
+              }}
+                <span>Landlord</span>
+              {{/radio-button}}
+              {{#radio-button
+                value="care-taker"
+                class="tiles-radio"
+                groupValue=model.contactPersonPosition
+              }}
+                <span>Care-taker</span>
+              {{/radio-button}}
+              {{#radio-button
+                value="agent"
+                class="tiles-radio"
+                groupValue=model.contactPersonPosition
+              }}
+                <span>Agent</span>
+              {{/radio-button}}
             </div>
           </div>
           <div class="form-group">
