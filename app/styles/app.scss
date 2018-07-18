@@ -1,0 +1,15 @@
+// App styles
+@import "add-rental";
+@import "navigation-step";
+@import "rental-listing";
+
+// Addons
+@import 'ember-power-select/themes/bootstrap';
+@import 'ember-power-select';
+
+
+
+.main-navigation {
+  border-bottom: 1px solid #ddd;
+  margin-bottom: 10px;
+}
