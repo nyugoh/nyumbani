@@ -13,7 +13,7 @@ export default Controller.extend({
   ]),
 
   showInstructions(e) {
-    console.log('instruction', e)
+
   },
 
   actions: {
@@ -22,7 +22,6 @@ export default Controller.extend({
     },
 
     validatePage(page) {
-      console.log(page)
       this.set('page', page);
     }
   }
