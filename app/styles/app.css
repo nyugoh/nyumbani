@@ -20,6 +20,9 @@
 .tiles-radio {
   margin-left: 15px;
 }
+.radio-labels label {
+  margin-bottom: 0;
+}
 .tiles-radio input {
   margin-left: 10px;
 }

@@ -31,17 +31,20 @@
             <p><small>Check the fields appropriately</small></p>
             <div class="row">
               <div class="col-4">
-                <div class="form-group">
+                <div class="form-group radio-labels">
                   <label>Has tiles ?</label>
                 </div>
-                <div class="form-group">
+                <div class="form-group radio-labels">
                   <label>Has a kitchen sink ?</label>
                 </div>
-                <div class="form-group">
+                <div class="form-group radio-labels">
                   <label>Has electricity ?</label>
                 </div>
-                <div class="form-group">
+                <div class="form-group radio-labels">
                   <label>Has a balcony ?</label>
+                </div>
+                <div class="form-group radio-labels">
+                  <label>Condition ?</label>
                 </div>
               </div>
               <div class="col-6">
@@ -73,11 +76,18 @@
                     {{form.input type='radio' class="tiles-radio" property='hasBalcony' name='balcony' label='N/A'}}
                   </div>
                 </div>
+                <div class="form-group">
+                  <div class="form-inline">
+                    {{form.input type='radio' class="tiles-radio" property='condition' name='condition' label='NEW'}}
+                    {{form.input type='radio' class="tiles-radio" property='condition' name='condition' label='GOOD'}}
+                    {{form.input type='radio' class="tiles-radio" property='condition' name='condition' label='OLD'}}
+                  </div>
+                </div>
               </div>
             </div>
           </div>
 
-          <div class="row">
+          <div class="row" style="margin-top: 20px;">
             <div class="col-4">
               <div class="form-group">
                 <label style="margin-right: 55px;">No of windows</label>
@@ -87,6 +97,9 @@
               </div>
               <div class="form-group">
                 <label style="margin-right: 85px;">No of taps</label>
+              </div>
+              <div class="form-group">
+                <label>Upload a photo of the house</label>
               </div>
             </div>
             <div class="col-6">
@@ -98,6 +111,9 @@
               </div>
               <div class="form-inline inline-inputs">
                 {{form.input property='numberofTaps' type='number'}}
+              </div>
+              <div class="form-inline inline-inputs">
+                {{form.input property='photo' type='file'}}
               </div>
             </div>
           </div>
