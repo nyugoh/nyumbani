@@ -6,5 +6,6 @@ export default Route.extend({
   },
 
   actions: {
+
   }
 });

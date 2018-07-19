@@ -6,11 +6,6 @@ export default Controller.extend({
   page: 1,
   rentalTypes: ['Single room', 'Bedsitter', '1 Bedroom', '2 Bedroom', 'Office'],
 
-  init() {
-    // this.model.set('type', );
-    // this.set(this.type, this.model.get('type'));
-  },
-
   actions: {
     setRentalType(type) {
       this.model.set('type', type)
@@ -20,6 +15,14 @@ export default Controller.extend({
     },
     validatePage(page) {
       this.set('page', page);
+    },
+    saveRental() {
+      let model = this.get('model');
+      model.save().then(rental => {
+        this.transitionToRoute('rentals');
+      }).catch(error => {
+        console.log(error);
+      });
     }
   }
 });

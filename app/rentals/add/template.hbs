@@ -14,7 +14,7 @@
             {{form.input property="location" label="Location" placeholder="Enter a property location ..."}}
             {{form.input property="buildingName" label="Building Name" placeholder="Building name ..."}}
             {{form.input property="monthlyRent" label="Monthly rent" placeholder="Monthly rent per month ..."}}
-            {{form.input property="deposit" label="Deposit" placeholder="Entry deposit ..."}}
+            {{form.input property="depositAmount" label="Deposit" placeholder="Entry deposit ..."}}
             <label for="">Select type of house</label>
             {{#power-select
               class="form-control"
@@ -206,10 +206,10 @@
                 {{form.input property='noWindows' type='number'}}
               </div>
               <div class="form-inline inline-inputs">
-                {{form.input property='numberofSockets' type='number'}}
+                {{form.input property='noSockets' type='number'}}
               </div>
               <div class="form-inline inline-inputs">
-                {{form.input property='numberofTaps' type='number'}}
+                {{form.input property='noTaps' type='number'}}
               </div>
               <div class="form-inline inline-inputs">
                 {{form.input property='photo' type='file'}}
