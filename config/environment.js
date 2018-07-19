@@ -9,10 +9,10 @@ module.exports = function(environment) {
     contentSecurityPolicy: {
       'connect-src': ["'self'", "http://localhost:8080" ],
       'default-src': ["'none'"],
-      'script-src':  ["'self'", "https://code.jquery.com", "https://cdnjs.cloudflare.com", "https://stackpath.bootstrapcdn.com"],
-      'font-src':    ["'self'"],
+      'script-src':  ["'self'", "'unsafe-inline'", "'unsafe-eval'", "http://localhost:7020", "https://code.jquery.com", "https://cdnjs.cloudflare.com", "https://stackpath.bootstrapcdn.com"],
+      'font-src':    ["'self'", "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
       'img-src':     ["'self'", "https://getbootstrap.com"],
-      'style-src':   ["'self'", "https://stackpath.bootstrapcdn.com"],
+      'style-src':   ["'self'",  "'unsafe-inline'", "'unsafe-eval'", "https://stackpath.bootstrapcdn.com", "https://fonts.googleapis.com"],
       'media-src':   ["'self'"]
     },
     EmberENV: {

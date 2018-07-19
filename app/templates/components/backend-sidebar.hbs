@@ -1,0 +1,28 @@
+<div id="main-menu" class="main-menu collapse navbar-collapse">
+  <ul class="nav navbar-nav" style="margin-top: 0;">
+    <li class="active">
+      {{#link-to 'backend'}}<i class="menu-icon fa fa-dashboard"></i>Dashboard {{/link-to}}
+    </li>
+    <li class="menu-item-has-children dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-home"></i>Rentals</a>
+      <ul class="sub-menu children dropdown-menu">
+        <li><i class="fa fa-plus"></i>{{#link-to 'rentals.add'}}Add{{/link-to}}</li>
+        <li><i class="fa fa-check"></i>{{#link-to 'rentals.add'}}Verify{{/link-to}}</li>
+      </ul>
+    </li>
+    <li class="menu-item-has-children dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-map-marker"></i>Locations</a>
+      <ul class="sub-menu children dropdown-menu">
+        <li><i class="fa fa-map-signs"></i>{{#link-to 'backend.locations'}}Locations{{/link-to}}</li>
+        <li><i class="fa fa-plus"></i>{{#link-to 'backend.locations.add'}}Add{{/link-to}}</li>
+      </ul>
+    </li>
+    <li class="menu-item-has-children dropdown">
+      <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-users"></i>Landlords</a>
+      <ul class="sub-menu children dropdown-menu">
+        <li><i class="fa fa-user-circle-o"></i>{{#link-to 'backend.landlords'}}Landlords{{/link-to}}</li>
+        <li><i class="fa fa-plus"></i>{{#link-to 'backend.landlords.add'}}Add{{/link-to}}</li>
+      </ul>
+    </li>
+  </ul>
+</div>

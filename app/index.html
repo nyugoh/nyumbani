@@ -6,12 +6,23 @@
     <title>Nyumbani | Find your next rentals/ apartment</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline' 'http://localhost:7020'; media-src *">
     {{content-for "head"}}
+    <link rel="stylesheet" href="{{rootURL}}assets/css/normalize.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/css/themify-icons.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/css/flag-icon.min.css">
+    <link rel="stylesheet" href="{{rootURL}}assets/css/cs-skin-elastic.css">
+    <!-- <link rel="stylesheet" href="{{rootURL}}assets/css/bootstrap-select.less"> -->
+    <link rel="stylesheet" href="{{rootURL}}assets/scss/style.css">
+    <link href="{{rootURL}}assets/css/lib/vector-map/jqvmap.min.css" rel="stylesheet">
+
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/vendor.css">
     <link integrity="" rel="stylesheet" href="{{rootURL}}assets/tut.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
     <link href="/open-iconic/font/css/open-iconic-bootstrap.css" rel="stylesheet">
 
     {{content-for "head-footer"}}
@@ -21,10 +32,23 @@
 
     <script src="{{rootURL}}assets/vendor.js"></script>
     <script src="{{rootURL}}assets/tut.js"></script>
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/js/bootstrap.min.js" integrity="sha384-o+RDsa0aLu++PJvFqy8fFScvbHFLtbvScb8AjopnFD+iEQ7wo/CG0xlczd+2O/em" crossorigin="anonymous"></script>
 
+    <script src="{{rootURL}}assets/js/vendor/jquery-2.1.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js"></script>
+    <script src="{{rootURL}}assets/js/plugins.js"></script>
+    <script src="{{rootURL}}assets/js/main.js"></script>
+
+
+    <script src="{{rootURL}}assets/js/lib/chart-js/Chart.bundle.js"></script>
+    <script src="{{rootURL}}assets/js/dashboard.js"></script>
+    <script src="{{rootURL}}assets/js/widgets.js"></script>
+    <script src="{{rootURL}}assets/js/lib/vector-map/jquery.vmap.js"></script>
+    <script src="{{rootURL}}assets/js/lib/vector-map/jquery.vmap.min.js"></script>
+    <script src="{{rootURL}}assets/js/lib/vector-map/jquery.vmap.sampledata.js"></script>
+    <script src="{{rootURL}}assets/js/lib/vector-map/country/jquery.vmap.world.js"></script>
     {{content-for "body-footer"}}
   </body>
 </html>
