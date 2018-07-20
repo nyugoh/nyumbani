@@ -1,2 +1,43 @@
-<h5>Add landlord</h5>
-{{outlet}}
+
+<div class="card">
+  <div class="card-header">
+    <h3>Add Landlord <span class="oi oi-person"></span></h3>
+  </div>
+  <div class="card-body">
+    {{#em-form class='form' model=model formLayout='default' submitButton=false as |form|}}
+      <div style="margin-top: 20px;">
+        <div class="col-6">
+          {{form.input property="fullName" label="Full name" placeholder="Full name..."}}
+          {{form.input property="phoneNumber" label="Phone No." placeholder="Phone No..."}}
+        </div>
+        <div class="col-6">
+          <p>Select position</p>
+          <div style="padding-left: 20px;">
+            {{#radio-button
+              value="landlord"
+              class="tiles-radio"
+              groupValue=model.position
+            }}
+              <span>Landlord</span>
+            {{/radio-button}}
+            {{#radio-button
+              value="care-taker"
+              class="tiles-radio"
+              groupValue=model.position
+            }}
+              <span>Care-taker</span>
+            {{/radio-button}}
+            {{#radio-button
+              value="agent"
+              class="tiles-radio"
+              groupValue=model.position
+            }}
+              <span>Agent</span>
+            {{/radio-button}}
+          </div>
+          <button class="btn btn-success btn-block float-right" {{action 'saveLandlord'}} style="margin-top:30px;">ADD <span class="oi oi-circle-check"></span></button>
+        </div>
+      </div>
+    {{/em-form}}
+  </div>
+</div>
