@@ -14,6 +14,7 @@ export default DS.Model.extend({
   hasSink: attr('boolean'),
   hasBalcony: attr('boolean'),
   hasElectricity: attr('boolean'),
+  verified: attr('boolean'),
   noWindows: attr('number'),
   noSockets: attr('number'),
   noTaps: attr('number'),

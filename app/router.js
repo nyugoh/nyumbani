@@ -18,6 +18,7 @@ Router.map(function() {
     this.route('landlords', function() {
       this.route('add');
     });
+    this.route('rentals');
   });
 });
 
