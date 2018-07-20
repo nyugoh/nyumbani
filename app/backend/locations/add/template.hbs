@@ -1,2 +1,19 @@
-{{outlet}}
-<h5>Add location</h5>
+<div class="card">
+  <div class="card-header">
+    <h3>Add location <span class="oi oi-map-marker"></span></h3>
+  </div>
+  <div class="card-body">
+    {{#em-form class='form' model=model formLayout='default' submitButton=false as |form|}}
+      <div style="margin-top: 20px;">
+        <div class="col-6">
+          {{form.input property="county" label="County" placeholder="County..."}}
+          {{form.input property="subCounty" label="Sub County" placeholder="Sub county"}}
+        </div>
+        <div class="col-6">
+          {{form.input property="town" label="Town" placeholder="Town ..."}}
+          <button class="btn btn-success btn-block float-right" action="(" style="margin-top:30px;">ADD <span class="oi oi-circle-check"></span></button>
+        </div>
+      </div>
+    {{/em-form}}
+  </div>
+</div>
