@@ -11,7 +11,7 @@
         </div>
         <div class="col-6">
           {{form.input property="town" label="Town" placeholder="Town ..."}}
-          <button class="btn btn-success btn-block float-right" action="(" style="margin-top:30px;">ADD <span class="oi oi-circle-check"></span></button>
+          <button class="btn btn-success btn-block float-right" {{action 'saveLocation'}} style="margin-top:30px;">ADD <span class="oi oi-circle-check"></span></button>
         </div>
       </div>
     {{/em-form}}

@@ -8,6 +8,6 @@ const {
 export default DS.Model.extend({
   county: attr('string'),
   subCounty: attr('string'),
-  townName: attr('string'),
+  town: attr('string'),
   rentals: hasMany()
 });
