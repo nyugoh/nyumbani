@@ -1,11 +1,18 @@
 import Route from '@ember/routing/route';
+// import { hash } from '@ember/RSVP';
+import Ember from 'ember';
 
 export default Route.extend({
-  setupController(controller, model) {
-    controller.set('model', this.store.createRecord('rental'));
+  model() {
+    const store = this.get('store');
+    return Ember.RSVP.hash({
+      locations: store.findAll('location'),
+      landlords: store.findAll('landlord')
+    });
   },
-
-  actions: {
-
+  setupController(controller, model) {
+    controller.set('rental', this.store.createRecord('rental'));
+    controller.set('locations', model.locations);
+    controller.set('landlords', model.landlords);
   }
 });

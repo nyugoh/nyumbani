@@ -2,23 +2,29 @@
   <div class="col-12 col-sm-8">
     <div class="add-rental">
       <div>
-        <h3>Add rentals property</h3>
+        <h3>Add rental property</h3>
         <div class="dropdown-divider"></div>
         {{navigation-step page=page}}
       </div>
-      {{#em-form class='form' model=model formLayout='default' submitButton=false as |form|}}
+      {{#em-form class='form' model=rental formLayout='default' submitButton=false as |form|}}
         {{#if (eq page 1)}}
           <div style="margin-top: 20px;">
             <h4>Basic required details</h4>
             <div class="dropdown-divider"></div>
-            {{form.input property="location" label="Location" placeholder="Enter a property location ..."}}
+            <p>Location</p>
+            <select class="form-control"  style="margin-bottom: 20px;" required name="locations" onchange={{action "setLocation" value="target.value"}}>
+              <option> -- Choose a location -- </option>
+              {{#each locations as |location|}}
+              <option selected={{eq location.id town}} value={{location.id}}>{{location.town}} - {{location.subCounty}} - {{location.county}}</option>
+              {{/each}}
+            </select>
             {{form.input property="buildingName" label="Building Name" placeholder="Building name ..."}}
             {{form.input property="monthlyRent" label="Monthly rent" placeholder="Monthly rent per month ..."}}
             {{form.input property="depositAmount" label="Deposit" placeholder="Entry deposit ..."}}
             <label for="">Select type of house</label>
             {{#power-select
               class="form-control"
-              selected=model.type
+              selected=rental.type
               options=rentalTypes
               onchange=(action "setRentalType")
             as |type|
@@ -62,21 +68,21 @@
                     {{#radio-button
                       value="yes"
                       class="tiles-radio"
-                      groupValue=model.hasTiles
+                      groupValue=rental.hasTiles
                     }}
                       <span>YES</span>
                     {{/radio-button}}
                     {{#radio-button
                       value="no"
                       class="tiles-radio"
-                      groupValue=model.hasTiles
+                      groupValue=rental.hasTiles
                     }}
                       <span>NO</span>
                     {{/radio-button}}
                     {{#radio-button
                       value="NA"
                       class="tiles-radio"
-                      groupValue=model.hasTiles
+                      groupValue=rental.hasTiles
                     }}
                       <span>N/A</span>
                     {{/radio-button}}
@@ -87,21 +93,21 @@
                     {{#radio-button
                       value="yes"
                       class="tiles-radio"
-                      groupValue=model.hasSink
+                      groupValue=rental.hasSink
                     }}
                       <span>YES</span>
                     {{/radio-button}}
                     {{#radio-button
                       value="no"
                       class="tiles-radio"
-                      groupValue=model.hasSink
+                      groupValue=rental.hasSink
                     }}
                       <span>NO</span>
                     {{/radio-button}}
                     {{#radio-button
                       value="NA"
                       class="tiles-radio"
-                      groupValue=model.hasSink
+                      groupValue=rental.hasSink
                     }}
                       <span>N/A</span>
                     {{/radio-button}}
@@ -112,21 +118,21 @@
                     {{#radio-button
                       value="yes"
                       class="tiles-radio"
-                      groupValue=model.hasElectricity
+                      groupValue=rental.hasElectricity
                     }}
                       <span>YES</span>
                     {{/radio-button}}
                     {{#radio-button
                       value="no"
                       class="tiles-radio"
-                      groupValue=model.hasElectricity
+                      groupValue=rental.hasElectricity
                     }}
                       <span>NO</span>
                     {{/radio-button}}
                     {{#radio-button
                       value="NA"
                       class="tiles-radio"
-                      groupValue=model.hasElectricity
+                      groupValue=rental.hasElectricity
                     }}
                       <span>N/A</span>
                     {{/radio-button}}
@@ -137,21 +143,21 @@
                     {{#radio-button
                       value="yes"
                       class="tiles-radio"
-                      groupValue=model.hasBalcony
+                      groupValue=rental.hasBalcony
                     }}
                       <span>YES</span>
                     {{/radio-button}}
                     {{#radio-button
                       value="no"
                       class="tiles-radio"
-                      groupValue=model.hasBalcony
+                      groupValue=rental.hasBalcony
                     }}
                       <span>NO</span>
                     {{/radio-button}}
                     {{#radio-button
                       value="NA"
                       class="tiles-radio"
-                      groupValue=model.hasBalcony
+                      groupValue=rental.hasBalcony
                     }}
                       <span>N/A</span>
                     {{/radio-button}}
@@ -162,21 +168,21 @@
                     {{#radio-button
                       value="new"
                       class="tiles-radio"
-                      groupValue=model.condition
+                      groupValue=rental.condition
                     }}
                       <span>NEW</span>
                     {{/radio-button}}
                     {{#radio-button
                       value="GOOD"
                       class="tiles-radio"
-                      groupValue=model.condition
+                      groupValue=rental.condition
                     }}
                       <span>GOOD</span>
                     {{/radio-button}}
                     {{#radio-button
                       value="OLD"
                       class="tiles-radio"
-                      groupValue=model.condition
+                      groupValue=rental.condition
                     }}
                       <span>OLD</span>
                     {{/radio-button}}
@@ -234,21 +240,21 @@
               {{#radio-button
                 value="landlord"
                 class="tiles-radio"
-                groupValue=model.contactPersonPosition
+                groupValue=rental.contactPersonPosition
               }}
                 <span>Landlord</span>
               {{/radio-button}}
               {{#radio-button
                 value="care-taker"
                 class="tiles-radio"
-                groupValue=model.contactPersonPosition
+                groupValue=rental.contactPersonPosition
               }}
                 <span>Care-taker</span>
               {{/radio-button}}
               {{#radio-button
                 value="agent"
                 class="tiles-radio"
-                groupValue=model.contactPersonPosition
+                groupValue=rental.contactPersonPosition
               }}
                 <span>Agent</span>
               {{/radio-button}}

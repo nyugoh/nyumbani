@@ -34,7 +34,7 @@
       </form>
     </div>
     <div class="row rentals-listings">
-      {{#each model as |rental|}}
+      {{#each rentals as |rental|}}
         {{#unless rental.isNew}}
           {{rental-card rental=rental}}
         {{/unless}}
