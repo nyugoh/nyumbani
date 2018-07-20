@@ -20,6 +20,7 @@ Router.map(function() {
     });
     this.route('rentals');
   });
+  this.route('loading');
 });
 
 export default Router;

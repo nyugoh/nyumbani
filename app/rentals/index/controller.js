@@ -6,6 +6,8 @@ export default Controller.extend({
     let model = this.get('model');
     let rentals = [];
     model.forEach((rental, index) => {
+      let rating = parseInt(rental.get('monthlyRent'))/5000;
+      rental.set('rating', rating);
       rental.get('location').then(location => {
         let town;
         if (location)
@@ -13,7 +15,8 @@ export default Controller.extend({
         else
           town = 'Unknown';
         rental.set('town', town);
-        rentals.pushObject(rental);
+        if(parseInt(rental.get('monthlyRent')) > 0)
+          rentals.pushObject(rental);
       });
     });
     return rentals;
