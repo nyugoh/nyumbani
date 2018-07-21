@@ -16,6 +16,7 @@ export default DS.Model.extend({
   hasElectricity: attr('boolean'),
   verified: attr('boolean'),
   noWindows: attr('number'),
+  bedrooms: attr('number'),
   noSockets: attr('number'),
   noTaps: attr('number'),
   condition: attr('string'),

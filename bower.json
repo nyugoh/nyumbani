@@ -1,0 +1,21 @@
+{
+  "name": "nyumbani",
+  "description": "Small description for tut goes here",
+  "main": "",
+  "authors": [
+    "nyugoh <nyugoh@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/nyugoh/nyumbani",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "octicons": "~8.0.0"
+  }
+}

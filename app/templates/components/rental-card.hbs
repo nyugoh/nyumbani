@@ -2,10 +2,10 @@
   <img class="card-img-top" src="/house.jpg" alt="Card image cap">
   <div class="card-body">
     <h5 class="card-title">{{rental.buildingName}}</h5>
-    <p style="color: #9e54ff;"><span class="oi oi-map-marker"></span> {{rental.town}}</p>
-    <p><span class="oi oi-home"></span> {{rental.type}} Ksh.{{rental.monthlyRent}}  p/m</p>
+    <p class="card-text" style="color: #9e54ff;"><span class="oi oi-map-marker"></span> {{rental.town}}</p>
+    <p class="card-text"><span class="oi oi-home"></span> {{rental.type}} Ksh.{{rental.monthlyRent}}  p/m</p>
+    <p class="card-text">{{capitalize-text rental.condition}}</p>
     {{rating-stars rating=rental.rating}}
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">BOOK</a>
+    <a style="margin-top: 10px;" href="#" class="btn btn-primary">BOOK</a>
   </div>
 </div>
