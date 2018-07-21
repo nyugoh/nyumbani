@@ -9,6 +9,7 @@ const Router = EmberRouter.extend({
 Router.map(function() {
   this.route('rentals', function() {
     this.route('add');
+    this.route('rental', { path: "/:rental_id" });
   });
   this.route('admin');
   this.route('backend', function() {

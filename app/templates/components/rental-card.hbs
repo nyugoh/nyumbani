@@ -1,7 +1,7 @@
 <div class="card rental-card" style="width: 18rem; margin-right: 15px;">
   <img class="card-img-top" src="/house.jpg" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">{{rental.buildingName}}</h5>
+    {{#link-to 'rentals.rental' rental.id}}<h5 class="card-title">{{rental.buildingName}}</h5>{{/link-to}}
     <p class="card-text" style="color: #9e54ff;"><span class="oi oi-map-marker"></span> {{rental.town}}</p>
     <p class="card-text"><span class="oi oi-home"></span> {{rental.type}} Ksh.{{rental.monthlyRent}}  p/m</p>
     <p class="card-text">{{capitalize-text rental.condition}}</p>

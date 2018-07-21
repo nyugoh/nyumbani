@@ -9,11 +9,30 @@
 @import 'ember-power-select/themes/bootstrap';
 @import 'ember-power-select';
 
-
-
+.carousel-caption {
+  background-color: #0000ff33;
+  color: black;
+  border-radius: 3px;
+}
 .main-navigation {
   border-bottom: 1px solid #ddd;
   margin-bottom: 10px;
+}
+.building-name {
+  margin: 10px 0 15px 5px;
+  border-bottom: 1px solid #e9ecef;
+}
+#houseSlides {
+  border: 1px solid grey;
+  border-radius: 3px;
+}
+#houseSlides img{
+  width: 100% !important;
+  height: 500px !important;
+  border-radius: 3px;
+}
+.rental-details {
+  border-top: 1px solid #e9ecef;
 }
 .main-navbar {
   margin-bottom: 0;
