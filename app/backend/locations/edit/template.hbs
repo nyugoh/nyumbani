@@ -1,0 +1,29 @@
+{{#if errorMessage}}
+  <div class="col-sm-12">
+    <div class="alert  alert-danger alert-dismissible fade show" role="alert">
+      <span class="badge badge-pill badge-danger">Error</span> {{errorMessage}}
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  </div>
+{{/if}}
+<div class="card">
+  <div class="card-header">
+    <h3>Edit location <span class="oi oi-map-marker"></span></h3>
+  </div>
+  <div class="card-body">
+    {{#em-form class='form' model=model formLayout='default' submitButton=false as |form|}}
+      <div style="margin-top: 20px;">
+        <div class="col-6">
+          {{form.input property="county" label="County" placeholder="County..."}}
+          {{form.input property="subCounty" label="Sub County" placeholder="Sub county"}}
+        </div>
+        <div class="col-6">
+          {{form.input property="town" label="Town" placeholder="Town ..."}}
+          <button class="btn btn-success btn-block float-right" {{action 'updateLocation' model}} style="margin-top:30px;">SAVE <span class="oi oi-circle-check"></span></button>
+        </div>
+      </div>
+    {{/em-form}}
+  </div>
+</div>

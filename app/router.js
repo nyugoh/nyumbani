@@ -15,6 +15,7 @@ Router.map(function() {
   this.route('backend', function() {
     this.route('locations', function() {
       this.route('add');
+      this.route('edit', { path: "/edit/:rental_id" });
     });
     this.route('landlords', function() {
       this.route('add');

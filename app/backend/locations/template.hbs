@@ -26,7 +26,10 @@
                     <td>{{location.county}}</td>
                     <td>{{location.subCounty}}</td>
                     <td>{{location.town}}</td>
-                    <td><span class="oi oi-trash text-danger" {{action 'deleteLocation' location.id on='click'}}></span></td>
+                    <td>
+                      <span style="margin-right: 20px;" class="oi oi-pencil text-primary" {{action 'editLocation' location on='click'}}></span>
+                      <span class="oi oi-trash text-danger" {{action 'deleteLocation' location.id on='click'}}></span>
+                    </td>
                   </tr>
                 {{/unless}}
               {{/each}}

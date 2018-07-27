@@ -22,6 +22,9 @@ export default Route.extend({
     deleteLocation(id) {
       let location = this.get('store').peekRecord('location', id);
       location.destroyRecord();
+    },
+    editLocation(location) {
+      this.transitionTo('backend.locations.edit', location);
     }
   }
 });
