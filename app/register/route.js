@@ -19,21 +19,19 @@ export default Route.extend({
       let controller = this.get('controller');
       controller.set('loading', true);
       let user = controller.get('user');
+      let password = user.get('password');
       if(!controller.get('agreeToTerms')){
         controller.set('loading', false);
         controller.set('errorMessage', 'You must agree with the terms and conditions');
       } else {
         user.save().then(()=>{
-          /*this.get('session').authenticate('authenticator:oauth2', user.get('email'), user.get('password')).then(()=> {
+          this.get('session').authenticate('authenticator:oauth2', user.get('email'), password).then(()=> {
             this.transitionTo('backend');
           }).catch(error => {
-            console.log(error)
             controller.set('loading', false);
             controller.set('errorMessage', error.error);
-          });*/
+          });
         }).catch(error => {
-          console.log(error)
-          console.log(error.error)
           controller.set('loading', false);
           controller.set('errorMessage', error.message);
         });
