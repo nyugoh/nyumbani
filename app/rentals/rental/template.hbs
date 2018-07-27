@@ -1,20 +1,22 @@
 <div class="row">
   <div class="building-name col-12">
-    <h2>{{model.buildingName}}</h2>
+    <h2>{{rental.buildingName}}</h2>
   </div>
   <div class="col-12 col-md-9">
     {{image-slider}}
   </div>
   <div class="col-12 col-md-3">
     <div class="rental-summary">
-      <h4>{{model.type}}, Ksh.{{model.monthlyRent}} per month</h4>
+      <h4>{{rental.type}}, Ksh.{{rental.monthlyRent}} per month</h4>
     </div>
     <div class="rental-details">
-      <h5>House details</h5>
-      <p><span class="oi oi-arrow-right"></span> {{model.bedrooms}} Bedrooms</p>
-      <p><span class="oi oi-arrow-right"></span> {{model.noSockets}} Sockets</p>
-      <p><span class="oi oi-arrow-right"></span> {{model.bedrooms}} Bedrooms</p>
-      <p><span class="oi oi-arrow-right"></span> {{model.bedrooms}} Bedrooms</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci, delectus harum nisi rem tempore temporibus veniam vero. Assumenda eaque eius minima placeat quia quod repellat sint sit suscipit vitae? Ipsum!</p>
+      <p><span class="oi oi-map-marker"></span> {{rental.town}} {{rental.subCounty}}</p>
+      <p><span class="oi oi-bolt"></span> {{rental.bedrooms}} Bedrooms</p>
+      <p><span class="oi oi-command"></span> {{rental.noSockets}} Sockets</p>
+      <p><span class="oi oi-info"></span> {{rental.noTaps}} Taps</p>
+      <p><span class="oi oi-flash"></span> {{rental.noWindows}} Windows</p>
+      {{rating-stars rating=rental.rating}}
     </div>
   </div>
 </div>
