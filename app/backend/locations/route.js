@@ -19,5 +19,9 @@ export default Route.extend({
           controller.set('errorMessage', 'Error saving location');
         });
     },
+    deleteLocation(id) {
+      let location = this.get('store').peekRecord('location', id);
+      location.destroyRecord();
+    }
   }
 });
