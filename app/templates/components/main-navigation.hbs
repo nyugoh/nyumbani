@@ -1,26 +1,9 @@
-<div class="main-navigation bg-light">
-  <div class="container">
-    <nav class="main-navbar navbar navbar-expand-lg navbar-light bg-light">
-      {{#link-to 'index' class="navbar-brand" styles="color:black; border-bottom:none; min-height: inherit;"}}
-        <img src="https://getbootstrap.com/docs/4.1/assets/brand/bootstrap-solid.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-        Nyumbani
-      {{/link-to}}
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            {{#link-to 'rentals' class="nav-link"}}Rentals{{/link-to}}
-          </li>
-          <li class="nav-item">
-            {{#link-to 'rentals.add' class="nav-link"}}Add{{/link-to}}
-          </li>
-          <li class="nav-item">
-            {{#link-to 'backend' class="nav-link"}}BACKEND{{/link-to}}
-          </li>
-        </ul>
-      </div>
-    </nav>
-  </div>
+<div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+  <h5 class="my-0 mr-md-auto font-weight-normal">NYUMBANI RENTALS</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    {{#link-to 'rentals' class="p-2 text-dark" }}Rentals{{/link-to}}
+    {{#link-to 'rentals.add' class="p-2 text-dark" }}Add Rental{{/link-to}}
+    {{#link-to 'backend' class="p-2 text-dark" }}Admin{{/link-to}}
+  </nav>
+  {{#link-to 'login' class="btn btn-outline-primary" }}Sign up{{/link-to}}
 </div>
