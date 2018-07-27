@@ -1,0 +1,52 @@
+<div>
+  <div class="sufee-login d-flex align-content-center flex-wrap">
+    <div class="container">
+      <div class="login-content">
+        <div class="login-logo">
+          <a href="index.html">
+            <img class="align-content" src="images/logo.png" alt="">
+          </a>
+        </div>
+        <div class="login-form">
+          <form {{action 'addUser' on='submit'}}>
+            <div class="form-group">
+              <label>User Name</label>
+              {{input type="text" class="form-control" placeholder="Full Name" value=user.fullName}}
+            </div>
+            <div class="form-group">
+              <label>Email address</label>
+              {{input type="email" class="form-control" placeholder="Email" value=user.email}}
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              {{input type="password" class="form-control" placeholder="Password" value=user.password}}
+            </div>
+            <div class="form-group">
+              <label>Phone number</label>
+              {{input type="number" class="form-control" placeholder="+2547" value=user.phoneNumber}}
+            </div>
+            <div class="checkbox">
+              <label>
+                {{input type="checkbox" checked=agreeToTerms}} Agree the terms and policy
+              </label>
+            </div>
+
+            {{#if loading}}
+              <button type="submit" class="btn btn-success btn-flat m-b-30 m-t-30">Loading...</button>
+            {{else}}
+              <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">REGISTER</button>
+            {{/if}}
+            {{#if errorMessage}}
+              <div style="margin-top: 10px;" class="alert  alert-danger alert-dismissible fade show" role="alert">
+                {{errorMessage}}
+              </div>
+            {{/if}}
+            <div class="register-link m-t-15 text-center">
+              <p>Already have account ? {{#link-to 'login'}}Sign in{{/link-to}}</p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

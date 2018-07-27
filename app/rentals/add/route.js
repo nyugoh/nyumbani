@@ -1,8 +1,9 @@
 import Route from '@ember/routing/route';
 // import { hash } from '@ember/RSVP';
 import Ember from 'ember';
+import AuthenticatedRouteMixin from 'ember-simple-auth/mixins/authenticated-route-mixin';
 
-export default Route.extend({
+export default Route.extend(AuthenticatedRouteMixin, {
   model() {
     const store = this.get('store');
     return Ember.RSVP.hash({

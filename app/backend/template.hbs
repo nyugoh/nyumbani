@@ -23,8 +23,13 @@
         <!-- Header-->
         <header id="header" class="header">
           <div class="header-menu">
-            <div class="col-sm-7"></div>
-            <div class="col-sm-5">
+            <div class="col-sm-5"></div>
+            <div class="col-sm-7">
+              {{#if session.isAuthenticated}}
+                <button class="btn btn-success" onclick={{action 'logout'}}>LOGOUT</button>
+              {{else}}
+                {{#link-to 'login' class="btn btn-success"}}LOGIN{{/link-to}}
+              {{/if}}
               <div class="user-area dropdown float-right">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <img class="user-avatar rounded-circle" src="/images/admin.jpg" alt="User Avatar">

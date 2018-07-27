@@ -8,7 +8,7 @@ module.exports = function(environment) {
     locationType: 'auto',
     contentSecurityPolicy: {
       'default-src': ["'none'"],
-      'connect-src': ["'self'", "http://localhost:8080", "http://localhost:7020" ],
+      'connect-src': ["'self'", "http://localhost:8080", "http://localhost:7020", "http://localhost:5000" ],
       'script-src':  ["'self'", "'unsafe-inline'", "'unsafe-eval'", "http://localhost:7020", "https://code.jquery.com", "https://cdnjs.cloudflare.com", "https://stackpath.bootstrapcdn.com"],
       'font-src':    ["'self'", "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
       'img-src':     ["'self'", "https://getbootstrap.com"],

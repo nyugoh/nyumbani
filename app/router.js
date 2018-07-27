@@ -22,6 +22,8 @@ Router.map(function() {
     this.route('rentals');
   });
   this.route('loading');
+  this.route('register');
+  this.route('login');
 });
 
 export default Router;
