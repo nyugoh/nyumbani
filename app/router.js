@@ -20,7 +20,9 @@ Router.map(function() {
     this.route('landlords', function() {
       this.route('add');
     });
-    this.route('rentals');
+    this.route('rentals', function() {
+      this.route('edit', { path: "/:rental_id" });
+    });
   });
   this.route('loading');
   this.route('register');
