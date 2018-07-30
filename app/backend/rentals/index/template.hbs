@@ -1,0 +1,46 @@
+{{breadcrumb-location location='Rentals'}}
+<div class="content mt-3">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <strong class="card-title">Rentals listing</strong>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <thead class="thead-dark">
+              <tr>
+                <th scope="col">Building</th>
+                <th scope="col">Rent</th>
+                <th scope="col">Condition</th>
+                <th scope="col">Type</th>
+                <th scope="col">Action</th>
+              </tr>
+              </thead>
+              <tbody>
+              {{#each model as |rental|}}
+                {{#unless rental.isNew}}
+                  <tr {{action 'editRental' rental on='click'}} class="pointer">
+                    <td>{{rental.buildingName}}</td>
+                    <td>{{rental.monthlyRent}}</td>
+                    <td>{{rental.condition}}</td>
+                    <td>{{rental.type}}</td>
+                    <td>
+                      <span style="margin-right: 20px;" class="oi oi-pencil text-primary" {{action 'editRental' rental on='click'}}></span>
+                      <span class="oi oi-trash text-danger" {{action 'deleteRental' rental.id on='click'}}></span>
+                    </td>
+                  </tr>
+                {{/unless}}
+              {{/each}}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="col4">
+        {{outlet}}
+      </div>
+    </div>
+  </div>
+</div>
