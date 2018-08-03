@@ -11,7 +11,7 @@ export default Route.extend({
       model.set('subCounty', location.get('subCounty'));
     });
     model.set('rating', model.get('monthlyRent')/5000);
-    model.set('addedOn', this._getAddedDate(model.get('createdAt')));
+    model.set('addedOn', this._getAddedDate(model.get('updatedAt')));
     controller.set('rental', model);
   },
 

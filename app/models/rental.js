@@ -26,6 +26,7 @@ export default DS.Model.extend({
   landlord: belongsTo(),
   review: hasMany(),
   createdAt: attr('string'),
+  updatedAt: attr('string'),
   fullDescription: attr('string'),
   briefDescription: attr('string')
 });
