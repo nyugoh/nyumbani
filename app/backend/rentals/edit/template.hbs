@@ -1,8 +1,277 @@
 {{breadcrumb-location location='Rentals'}}
-<div class="row">
- <div class="col-12">
-   <div class="header">
-     <h3>{{rental.buildingName}}</h3>
-   </div>
- </div>
-</div>
+{{#em-form class='form col-12' model=rental formLayout='default' submitButton=false as |form|}}
+  <div class="col-6 col-md-6">
+    <div style="margin-top: 20px;">
+      <p>Location</p>
+      <select class="form-control"  style="margin-bottom: 20px;" required name="locations" onchange={{action "setLocation" value="target.value"}}>
+        <option> -- Choose a location -- </option>
+        {{#each locations as |location|}}
+          <option selected={{eq location.id town}} value={{location.id}}>{{location.town}} - {{location.subCounty}} - {{location.county}}</option>
+        {{/each}}
+      </select>
+      {{form.input property="buildingName" label="Building Name" placeholder="Building name ..."}}
+      {{form.input property="monthlyRent" label="Monthly rent" placeholder="Monthly rent per month ..."}}
+      {{form.input property="depositAmount" label="Deposit" placeholder="Entry deposit ..."}}
+      <label for="">Select type of house</label>
+      {{#power-select
+        class="form-control"
+        selected=rental.type
+        options=rentalTypes
+        onchange=(action "setRentalType")
+      as |type|
+      }}
+        {{type}}
+      {{/power-select}}
+      <br><br>
+      {{form.text label="Brief Description" property="briefDescription" rows=5}}
+
+      <label for="">Detailed Description</label>
+      <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#description"> <span class="oi oi-plus"> Full description</span></button>
+      <div>
+        {{{rental.fullDescription}}}
+      </div>
+
+
+      <!-- Modal -->
+      <div class="modal fade" id="description" tabindex="-1" role="dialog" aria-labelledby="descriptionLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="descriptionLabel">Detailed description</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              {{pell-editor value=rental.fullDescription  onChange=(action (mut rental.fullDescription)) pellOptions=options}}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-6 col-md-6">
+    <div style="margin-top: 20px;">
+      <div class="row">
+        <div class="col-4">
+          <div class="form-group radio-labels">
+            <label>Has tiles ?</label>
+          </div>
+          <div class="form-group radio-labels">
+            <label>Has a kitchen sink ?</label>
+          </div>
+          <div class="form-group radio-labels">
+            <label>Has electricity ?</label>
+          </div>
+          <div class="form-group radio-labels">
+            <label>Has a balcony ?</label>
+          </div>
+          <div class="form-group radio-labels">
+            <label>Condition ?</label>
+          </div>
+        </div>
+        <div class="col-6">
+          <div class="form-group">
+            <div class="form-inline">
+              {{#radio-button
+                value="yes"
+                class="tiles-radio"
+                groupValue=rental.hasTiles
+              }}
+                <span>YES</span>
+              {{/radio-button}}
+              {{#radio-button
+                value="no"
+                class="tiles-radio"
+                groupValue=rental.hasTiles
+              }}
+                <span>NO</span>
+              {{/radio-button}}
+              {{#radio-button
+                value="NA"
+                class="tiles-radio"
+                groupValue=rental.hasTiles
+              }}
+                <span>N/A</span>
+              {{/radio-button}}
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-inline">
+              {{#radio-button
+                value="yes"
+                class="tiles-radio"
+                groupValue=rental.hasSink
+              }}
+                <span>YES</span>
+              {{/radio-button}}
+              {{#radio-button
+                value="no"
+                class="tiles-radio"
+                groupValue=rental.hasSink
+              }}
+                <span>NO</span>
+              {{/radio-button}}
+              {{#radio-button
+                value="NA"
+                class="tiles-radio"
+                groupValue=rental.hasSink
+              }}
+                <span>N/A</span>
+              {{/radio-button}}
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-inline">
+              {{#radio-button
+                value="yes"
+                class="tiles-radio"
+                groupValue=rental.hasElectricity
+              }}
+                <span>YES</span>
+              {{/radio-button}}
+              {{#radio-button
+                value="no"
+                class="tiles-radio"
+                groupValue=rental.hasElectricity
+              }}
+                <span>NO</span>
+              {{/radio-button}}
+              {{#radio-button
+                value="NA"
+                class="tiles-radio"
+                groupValue=rental.hasElectricity
+              }}
+                <span>N/A</span>
+              {{/radio-button}}
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-inline">
+              {{#radio-button
+                value="yes"
+                class="tiles-radio"
+                groupValue=rental.hasBalcony
+              }}
+                <span>YES</span>
+              {{/radio-button}}
+              {{#radio-button
+                value="no"
+                class="tiles-radio"
+                groupValue=rental.hasBalcony
+              }}
+                <span>NO</span>
+              {{/radio-button}}
+              {{#radio-button
+                value="NA"
+                class="tiles-radio"
+                groupValue=rental.hasBalcony
+              }}
+                <span>N/A</span>
+              {{/radio-button}}
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="form-inline">
+              {{#radio-button
+                value="NEW"
+                class="tiles-radio"
+                groupValue=rental.condition
+              }}
+                <span>NEW</span>
+              {{/radio-button}}
+              {{#radio-button
+                value="GOOD"
+                class="tiles-radio"
+                groupValue=rental.condition
+              }}
+                <span>GOOD</span>
+              {{/radio-button}}
+              {{#radio-button
+                value="OLD"
+                class="tiles-radio"
+                groupValue=rental.condition
+              }}
+                <span>OLD</span>
+              {{/radio-button}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row" style="margin-top: 20px;">
+      <div class="col-4">
+        <div class="form-group">
+          <label style="margin-right: 55px;">No of windows</label>
+        </div>
+        <div class="form-group">
+          <label style="margin-right: 30px;">No of wall sockets</label>
+        </div>
+        <div class="form-group">
+          <label style="margin-right: 85px;">No of taps</label>
+        </div>
+        <div class="form-group">
+          <label style="margin-right: 85px;">No of bedrooms</label>
+        </div>
+        <div class="form-group">
+          <label>Upload a photo of the house</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-inline inline-inputs">
+          {{form.input property='noWindows' type='number'}}
+        </div>
+        <div class="form-inline inline-inputs">
+          {{form.input property='noSockets' type='number'}}
+        </div>
+        <div class="form-inline inline-inputs">
+          {{form.input property='noTaps' type='number'}}
+        </div>
+        <div class="form-inline inline-inputs">
+          {{form.input property='bedrooms' type='number'}}
+        </div>
+        <div class="form-inline inline-inputs">
+          {{form.input property='photo' type='file'}}
+        </div>
+      </div>
+    </div>
+    <div class="form-group" style="margin-top: 20px;">
+      <h4 class="card-title">Contact person information</h4>
+      <div class="dropdown-divider"></div>
+      {{form.input property="fullName" label="Full name" placeholder="Full name ..."}}
+      {{form.input property="phoneNumber" label="Phone number" placeholder="Phone No ..."}}
+      <p>Select your position</p>
+      <div style="padding-left: 20px;">
+        {{#radio-button
+          value="landlord"
+          class="tiles-radio"
+          groupValue=rental.contactPersonPosition
+        }}
+          <span>Landlord</span>
+        {{/radio-button}}
+        {{#radio-button
+          value="care-taker"
+          class="tiles-radio"
+          groupValue=rental.contactPersonPosition
+        }}
+          <span>Care-taker</span>
+        {{/radio-button}}
+        {{#radio-button
+          value="agent"
+          class="tiles-radio"
+          groupValue=rental.contactPersonPosition
+        }}
+          <span>Agent</span>
+        {{/radio-button}}
+      </div>
+    </div>
+    <div class="form-group add-rental-navigation">
+      <button class="btn btn-success float-right" {{ action "saveRental"}}>SAVE PROPERTY <span class="oi oi-circle-check"></span></button>
+    </div>
+  </div>
+{{/em-form}}

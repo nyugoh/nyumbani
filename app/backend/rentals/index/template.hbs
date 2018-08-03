@@ -21,13 +21,13 @@
               <tbody>
               {{#each model as |rental|}}
                 {{#unless rental.isNew}}
-                  <tr {{action 'editRental' rental on='click'}} class="pointer">
+                  <tr {{action 'editRental' rental.id on='click'}} class="pointer">
                     <td>{{rental.buildingName}}</td>
                     <td>{{rental.monthlyRent}}</td>
                     <td>{{rental.condition}}</td>
                     <td>{{rental.type}}</td>
                     <td>
-                      <span style="margin-right: 20px;" class="oi oi-pencil text-primary" {{action 'editRental' rental on='click'}}></span>
+                      <span style="margin-right: 20px;" class="oi oi-pencil text-primary" {{action 'editRental' rental.id on='click'}}></span>
                       <span class="oi oi-trash text-danger" {{action 'deleteRental' rental.id on='click'}}></span>
                     </td>
                   </tr>
