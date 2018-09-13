@@ -86,11 +86,12 @@ export default Controller.extend({
   },
   _searchRental(query) {
     let rental = this.get('rentals').mapBy('buildingName');
+    let rentalid = this.get('rentals').mapBy('id');
     let dropdown = $('.results');
     let results = '';
     rental.map((location, index) => {
       if(location.toLowerCase().indexOf(query.trim().toLowerCase()) > -1)
-        results += `<li><a href="index.html">${location}</span></a></li>`;
+        results += `<li><a href="/rentals/${rentalid[index]}">${location}</span></a></li>`;
     });
     dropdown.empty(); // Clear previous results if any
     dropdown.append(results);

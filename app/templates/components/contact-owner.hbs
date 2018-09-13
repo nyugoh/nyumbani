@@ -1,0 +1,33 @@
+<button class="btn btn-success" data-toggle="modal" data-target="#contactOwner">CONTACT OWNER</button>
+
+<div class="modal fade" id="contactOwner" tabindex="-1" role="dialog" aria-labelledby="contactOwnerLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="contactOwnerLabel">Contact Owner</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+      {{#em-form class='form' model=message formLayout='default' submitButton=false as |form|}}
+        {{form.input property="name" label="Your name" placeholder="Your name ..."}}
+        {{form.input property="email" label="Your email" placeholder="Your email ..."}}
+        {{form.text label="Brief Description" placeholder="Leave your message here ..." property="content" rows=5}}
+      {{/em-form}}
+      </div>
+      <div class="modal-footer">
+       <div class="text-center">
+         {{#if messageSent}}
+           <p class="text-success">Message Sent</p>
+         {{/if}}
+         {{#if error}}
+           <p class="text-warning">{{error}}</p>
+         {{/if}}
+       </div>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary"  onclick={{action "leaveMessage" message}}>Save</button>
+      </div>
+    </div>
+  </div>
+</div>

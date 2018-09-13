@@ -13,6 +13,7 @@ export default Route.extend({
     model.set('rating', model.get('monthlyRent')/5000);
     model.set('addedOn', this._getAddedDate(model.get('updatedAt')));
     controller.set('rental', model);
+    controller.set('message', this.get('store').createRecord('message'));
   },
 
   _getAddedDate(date) {
