@@ -1,11 +1,18 @@
 <div class="row justify-content-center">
-  <div class="col-12 col-sm-10">
-    <div class="shadow-sm p-3 mb-5 bg-white rounded rental-filters">
-      <form class="form-inline">
-        <div class="search">
-          <input type="search" style="width: 200px;" class="form-control" placeholder="Search building ..." onkeyup={{action 'searchRental' value="target.value"}}>
-          <ul class="results"></ul>
-        </div>
+  <div class="col-2" style="border-right: 1px solid #f5f5f5">
+    <div class="">
+      <form class="">
+        <h4>Filters</h4>
+        <div class="dropdown-divider"/>
+        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Town</label>
+        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" onchange={{action "setType" value="target.value"}}>
+          <option selected value="">-- Select --</option>
+          {{#each locations as |location|}}
+            <option value={{location.town}}>{{location.town}}, {{location.county}}</option>
+          {{/each}}
+        </select>
+
+        <div class="dropdown-divider"/>
         <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Type</label>
         <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" onchange={{action "setType" value="target.value"}}>
           <option selected value="">-- Select --</option>
@@ -16,6 +23,7 @@
           <option value="Office">Office</option>
         </select>
 
+        <div class="dropdown-divider"/>
         <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Rooms</label>
         <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" onchange={{action 'setRooms' value='target.value'}}>
           <option selected value="">-- Select --</option>
@@ -24,6 +32,7 @@
           <option value="3">Three</option>
         </select>
 
+        <div class="dropdown-divider"/>
         <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Price</label>
         <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" onchange={{action 'setPrice' value='target.value'}}>
           <option selected value="">-- Select --</option>
@@ -34,11 +43,26 @@
           <option value="4">21k - 50k</option>
           <option value="5">Above 51k</option>
         </select>
-        <button type="submit" class="btn btn-primary my-1">SEARCH <span class="oi oi-magnifying-glass"></span></button>
+        <div class="dropdown-divider"/>
+        <!--<button type="submit" class="btn btn-primary my-1">SEARCH <span class="oi oi-magnifying-glass"></span></button>-->
       </form>
     </div>
+  </div>
+  <div class="col-10">
+    <div class="shadow-sm p-3 mb-5 bg-white rounded">
+      <div class="search">
+        <input type="search" style="width: 200px;display: inline;" class="form-control" placeholder="Search building ..." onkeyup={{action 'searchRental' value="target.value"}}>
+        <ul class="results"></ul>
+        <span style="display: inline;">Current filters:</span>
+        {{#each filters as |filter|}}
+          <button type="button" class="btn btn-default">
+            <span class="badge badge-pill badge-primary">{{filter.value}}</span> <span class="badge badge-light" {{action 'clearFilter' filter.filter}}>x</span>
+          </button>
+        {{/each}}
+      </div>
+    </div>
     <div class="row rentals-listings">
-      {{#each rentals as |rental|}}
+      {{#each filteredRentals as |rental|}}
         {{#unless rental.isNew}}
           {{rental-card rental=rental}}
         {{/unless}}

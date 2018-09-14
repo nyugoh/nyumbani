@@ -1,14 +1,38 @@
 import Controller from '@ember/controller';
 import { computed } from '@ember/object';
 import { isEmpty } from '@ember/utils';
-// import { filterBy } from '@ember/array';
 
 export default Controller.extend({
+  town: '',
   type: '',
   price: '',
   bedrooms: '',
-  rentals: computed('model.[]', 'type', 'bedrooms', 'price', function () {
-    let model = this.get('model');
+  filters:  computed('type', 'price', 'bedrooms', 'town', function () {
+    let filters = [];
+    let town = this.get('town');
+    let type = this.get('type');
+    let price = this.get('price');
+    let bedrooms = this.get('bedrooms');
+    let priceRange = [];
+    priceRange[0] = 'Below 5k';
+    priceRange[1] = '6k -10k';
+    priceRange[2] = '11k - 15k';
+    priceRange[3] = '16k - 20k';
+    priceRange[4] = '21k - 50k';
+    priceRange[5] = 'Above 50k';
+    if(!isEmpty(type))
+      filters.push({filter:'type', value: type});
+    if(!isEmpty(town))
+      filters.push({filter:'town', value: town});
+    if(!isEmpty(price))
+      filters.push({filter:'price', value: priceRange[price]});
+    if(!isEmpty(bedrooms))
+      filters.push({filter:'bedrooms', value: `${bedrooms} Bedroom(s)`});
+    return filters;
+  }),
+  filteredRentals: computed('rentals.[]', 'type', 'bedrooms', 'price', 'town', function () {
+    let model = this.get('rentals');
+    let town = this.get('town');
     let type = this.get('type');
     let bedrooms = this.get('bedrooms');
     let price = this.get('price');
@@ -25,6 +49,10 @@ export default Controller.extend({
         rental.set('town', town);
 
         if(!isEmpty(type) && rental.get('type') === type){
+          if(parseInt(rental.get('monthlyRent')) > 0)
+            rentals.pushObject(rental);
+        }
+        if(!isEmpty(town) && rental.get('town') === town){
           if(parseInt(rental.get('monthlyRent')) > 0)
             rentals.pushObject(rental);
         }
@@ -48,6 +76,9 @@ export default Controller.extend({
     setType(type){
       this.set("type", type);
     },
+    setTown(town){
+      this.set("town", town);
+    },
     setRooms(rooms){
       this.set("bedrooms", rooms);
     },
@@ -58,6 +89,9 @@ export default Controller.extend({
     },
     setPrice(price) {
       this.set('price', price);
+    },
+    clearFilter(filter){
+      this.set(filter, '');
     }
   },
 
