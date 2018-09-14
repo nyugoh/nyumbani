@@ -41,6 +41,7 @@ export default Controller.extend({
     let condition = this.get('condition');
     let bedrooms = this.get('bedrooms');
     let price = this.get('price');
+    let filters = this.get('filters');
     let rentals = [];
     model.forEach((rental, index) => {
       let rating = parseInt(rental.get('monthlyRent'))/5000;
@@ -52,8 +53,18 @@ export default Controller.extend({
         else
           town = 'Unknown';
         rental.set('town', town);
+        let passed = true;
+        filters.forEach((filter, index)=> {
+          if(passed)
+            if(rental.get(filter.filter) === filter.value)
+              passed = true;
+            else
+              passed = false;
 
-        if(!isEmpty(type) && rental.get('type') === type){
+        });
+        if(passed)
+          rentals.pushObject(rental);
+        /*if(!isEmpty(type) && rental.get('type') === type){
           if(parseInt(rental.get('monthlyRent')) > 0)
             rentals.pushObject(rental);
         }
@@ -71,10 +82,13 @@ export default Controller.extend({
         if(isEmpty(type) && isEmpty(bedrooms) && isEmpty(price)){
           if(parseInt(rental.get('monthlyRent')) > 0)
             rentals.pushObject(rental);
-        }
+        }*/
       });
     });
-    return rentals;
+    if(filters.length == 0)
+      return model;
+    else
+      return rentals;
   }),
 
   actions: {
@@ -96,7 +110,7 @@ export default Controller.extend({
       this.set('price', price);
     },
     setCondition(condition) {
-      this.set('condition', condition);
+      this.set('condition', condition.toUpperCase());
     },
     clearFilter(filter){
       this.set(filter, '');
