@@ -5,12 +5,14 @@ import { isEmpty } from '@ember/utils';
 export default Controller.extend({
   town: '',
   type: '',
+  condition: '',
   price: '',
   bedrooms: '',
-  filters:  computed('type', 'price', 'bedrooms', 'town', function () {
+  filters:  computed('type', 'price', 'bedrooms', 'town', 'condition', function () {
     let filters = [];
     let town = this.get('town');
     let type = this.get('type');
+    let condition = this.get('condition');
     let price = this.get('price');
     let bedrooms = this.get('bedrooms');
     let priceRange = [];
@@ -28,12 +30,15 @@ export default Controller.extend({
       filters.push({filter:'price', value: priceRange[price]});
     if(!isEmpty(bedrooms))
       filters.push({filter:'bedrooms', value: `${bedrooms} Bedroom(s)`});
+    if(!isEmpty(condition))
+      filters.push({filter:'condition', value: `${condition}`});
     return filters;
   }),
-  filteredRentals: computed('rentals.[]', 'type', 'bedrooms', 'price', 'town', function () {
+  filteredRentals: computed('rentals.[]', 'type', 'bedrooms', 'price', 'town', 'condition', function () {
     let model = this.get('rentals');
     let town = this.get('town');
     let type = this.get('type');
+    let condition = this.get('condition');
     let bedrooms = this.get('bedrooms');
     let price = this.get('price');
     let rentals = [];
@@ -89,6 +94,9 @@ export default Controller.extend({
     },
     setPrice(price) {
       this.set('price', price);
+    },
+    setCondition(condition) {
+      this.set('condition', condition);
     },
     clearFilter(filter){
       this.set(filter, '');

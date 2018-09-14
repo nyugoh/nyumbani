@@ -5,7 +5,7 @@
         <h4>Filters</h4>
         <div class="dropdown-divider"/>
         <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Town</label>
-        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" onchange={{action "setType" value="target.value"}}>
+        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" onchange={{action "setTown" value="target.value"}}>
           <option selected value="">-- Select --</option>
           {{#each locations as |location|}}
             <option value={{location.town}}>{{location.town}}, {{location.county}}</option>
@@ -43,6 +43,17 @@
           <option value="4">21k - 50k</option>
           <option value="5">Above 51k</option>
         </select>
+
+        <div class="dropdown-divider"/>
+        <label class="my-1 mr-2" for="inlineFormCustomSelectPref">Condition</label>
+        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref" onchange={{action "setCondition" value="target.value"}}>
+          <option selected value="">-- Select --</option>
+          <option value="new">New</option>
+          <option value="good">Good</option>
+          <option value="old">Old</option>
+        </select>
+
+
         <div class="dropdown-divider"/>
         <!--<button type="submit" class="btn btn-primary my-1">SEARCH <span class="oi oi-magnifying-glass"></span></button>-->
       </form>
