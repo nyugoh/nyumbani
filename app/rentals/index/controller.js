@@ -6,41 +6,37 @@ export default Controller.extend({
   town: '',
   type: '',
   condition: '',
-  price: '',
+  monthlyRent: '',
   bedrooms: '',
-  filters:  computed('type', 'price', 'bedrooms', 'town', 'condition', function () {
+  filters:  computed('type', 'monthlyRent', 'bedrooms', 'town', 'condition', function () {
     let filters = [];
     let town = this.get('town');
     let type = this.get('type');
     let condition = this.get('condition');
-    let price = this.get('price');
+    let monthlyRent = this.get('monthlyRent');
     let bedrooms = this.get('bedrooms');
-    let priceRange = [];
-    priceRange[0] = 'Below 5k';
-    priceRange[1] = '6k -10k';
-    priceRange[2] = '11k - 15k';
-    priceRange[3] = '16k - 20k';
-    priceRange[4] = '21k - 50k';
-    priceRange[5] = 'Above 50k';
+    let monthlyRentRange = [];
+    monthlyRentRange[0] = 'Below 5k';
+    monthlyRentRange[1] = '6k - 10k';
+    monthlyRentRange[2] = '11k - 15k';
+    monthlyRentRange[3] = '16k - 20k';
+    monthlyRentRange[4] = '21k - 50k';
+    monthlyRentRange[5] = 'Above 50k';
     if(!isEmpty(type))
       filters.push({filter:'type', value: type});
     if(!isEmpty(town))
       filters.push({filter:'town', value: town});
-    if(!isEmpty(price))
-      filters.push({filter:'price', value: priceRange[price]});
+    if(!isEmpty(monthlyRent))
+      filters.push({filter:'monthlyRent', value: monthlyRentRange[monthlyRent]});
     if(!isEmpty(bedrooms))
       filters.push({filter:'bedrooms', value: `${bedrooms} Bedroom(s)`});
     if(!isEmpty(condition))
       filters.push({filter:'condition', value: `${condition}`});
     return filters;
   }),
-  filteredRentals: computed('rentals.[]', 'type', 'bedrooms', 'price', 'town', 'condition', function () {
+  filteredRentals: computed('rentals.[]', 'type', 'bedrooms', 'monthlyRent', 'town', 'condition', function () {
     let model = this.get('rentals');
     let town = this.get('town');
-    let type = this.get('type');
-    let condition = this.get('condition');
-    let bedrooms = this.get('bedrooms');
-    let price = this.get('price');
     let filters = this.get('filters');
     let rentals = [];
     model.forEach((rental, index) => {
@@ -55,12 +51,15 @@ export default Controller.extend({
         rental.set('town', town);
         let passed = true;
         filters.forEach((filter, index)=> {
-          if(passed)
+          if(passed){
             if(rental.get(filter.filter) === filter.value)
               passed = true;
             else
               passed = false;
-
+            if(filter.filter === 'monthlyRent')
+              if(this._comparePriceRange(this.get('monthlyRent'), rental.get('monthlyRent')))
+                passed = true;
+          }
         });
         if(passed)
           rentals.pushObject(rental);
@@ -75,11 +74,11 @@ export default Controller.extend({
         if(!isEmpty(bedrooms) && rental.get('bedrooms') == bedrooms){
           rentals.pushObject(rental);
         }
-        if(!isEmpty(price)){
-          if(this._comparePriceRange(price, rental.get('monthlyRent')))
+        if(!isEmpty(monthlyRent)){
+          if(this._comparePriceRange(monthlyRent, rental.get('monthlyRent')))
             rentals.pushObject(rental);
         }
-        if(isEmpty(type) && isEmpty(bedrooms) && isEmpty(price)){
+        if(isEmpty(type) && isEmpty(bedrooms) && isEmpty(monthlyRent)){
           if(parseInt(rental.get('monthlyRent')) > 0)
             rentals.pushObject(rental);
         }*/
@@ -106,8 +105,8 @@ export default Controller.extend({
         this._searchRental(query)
       }
     },
-    setPrice(price) {
-      this.set('price', price);
+    setMonthlyRent(monthlyRent) {
+      this.set('monthlyRent', monthlyRent);
     },
     setCondition(condition) {
       this.set('condition', condition.toUpperCase());
@@ -117,23 +116,23 @@ export default Controller.extend({
     }
   },
 
-  _comparePriceRange(range, price) {
-    let priceRange = [5000, 10000, 15000, 20000, 50000];
+  _comparePriceRange(range, monthlyRent) {
+    let monthlyRentRange = [5000, 10000, 15000, 20000, 50000];
     let status = false;
     range = parseInt(range);
-    price = parseInt(price);
+    monthlyRent = parseInt(monthlyRent);
     switch (range) {
       case 0:
-        status = price <= priceRange[range];
+        status = monthlyRent <= monthlyRentRange[range];
         break;
       case 1:
       case 2:
       case 3:
       case 4:
-        status = price > priceRange[range-1] && price < priceRange[range];
+        status = monthlyRent > monthlyRentRange[range-1] && monthlyRent < monthlyRentRange[range];
         break;
       case 5:
-        status = price > priceRange[range];
+        status = monthlyRent > monthlyRentRange[range];
         break;
       default:
         status = false;
